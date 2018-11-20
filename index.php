@@ -42,7 +42,7 @@
       <div class="centerMe">
     <label for="description">Task Description</label>
      </div>
-    <input type="text" class="form-control" id="taskdesc" name="taskdesc" aria-describedby="description">
+    <input type="text" class="form-control" id="description" name="description" aria-describedby="description">
   </div>
    <div class="centerMe">
   <button class="btn btn-outline-primary" role="button" aria-pressed="true">Enter Task</button>

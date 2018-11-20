@@ -27,7 +27,7 @@
     $error_msg = "";
 
     // If user isn't logged in, try to log them in
-    if (!isset($_SESSION['user_id'])) {
+    if (!isset($_SESSION['id'])) {
         if (isset($_POST['submit'])) {
     
             // Connect to the DB
@@ -48,7 +48,7 @@
                 $query = $db->prepare($sql);
                 $query->execute([$user_username]);
                 $row = $query->fetch();
-                //print_r($row);
+                
             }
             catch(Exception $ex)
             {
