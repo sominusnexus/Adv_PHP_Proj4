@@ -52,6 +52,9 @@
 		// Read All Tasks
 		public function readAll() {
 			// Database Technology, Server, DB name, username, password
+
+            $retVal = null;
+
 			$db = new PDO("mysql:host=localhost;dbname=project_4", "root", "root");
 
 			// Read all records
@@ -64,18 +67,19 @@
             {
                 $query = $db->prepare($sql);
                 $query->execute();
-                $results = $query->fetchAll(PDO::FETCH_CLASS, 'TaskManager');
+                $results = $query->fetchAll(PDO::FETCH_ASSOC);
+                $retVal = json_encode($results, JSON_PRETTY_PRINT);
             }
             catch(Exception $ex)
             {
                 echo "{$ex->getMessage()}<br/>";
             }
 
-            foreach($results as $result) {
-                echo $result . '<br>';
-            }
+            //foreach($results as $result) {
+               // echo $result . '<br>';
+           // }
             
-
+            return $retVal;
 		}
 		
 		// Deletes a record on given Id
@@ -150,6 +154,7 @@
                 $query->bindParam(':id', $id);
                 $query->execute();
                 $results = $query->fetch(PDO::FETCH_ASSOC);
+                $retVal = json_encode($results, JSON_PRETTY_PRINT);
             }
             catch(Exception $ex)
             {
@@ -158,9 +163,10 @@
             
             if ($results == !null) {
             
-            foreach ($results as $result) {
-                echo $result;
-            }
+            //foreach ($results as $result) {
+              //  echo $result;
+            //}
+                return $retVal;
             
             } else {
                 

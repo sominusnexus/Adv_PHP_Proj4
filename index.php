@@ -37,7 +37,7 @@
     <div class="card mx-auto" style="width: 18rem;">
   <div class="card-body">
     <h5 class="card-title centerMe">Create a Task</h5>
-    <form action="CreateTask.php" method="POST">
+    <form action="TaskService.php" method="POST">
   <div class="form-group">
       <div class="centerMe">
     <label for="description">Task Description</label>
