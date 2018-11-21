@@ -107,6 +107,8 @@
         <input type="reset" class="btn btn-default" value="Clear" name="reset" />
                              
     </form>
+    <br/>
+        <a href="Register.php" class="btn btn-secondary btn-lg">Create an Account</a>
     </div>
 <?php
 

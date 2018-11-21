@@ -72,9 +72,8 @@
             // Confirm success with the user
                 echo "<br/><br/>";
                 echo '<h2 class="centerMe">Your account has been created successfully!';
-                echo "<br/>";
-                echo '<hr />';
-                echo '<br />';       
+                sleep(5);
+                header('Location: TaskService.php', true, 301);      
 
                 echo "<div class='centerMe'>";
                 echo "<a href='Login.php' class='btn btn-info' role='button'>Login</a>";
@@ -84,10 +83,8 @@
             // Username already exists display error
             echo "<div class='centerMe'>";
             echo "<h2>Username already exists!  Please create a unique username!</h3>";
-            echo "<h3>If you have an account, please visit the Login page.</h3>";
-            echo "<br/>";
-            echo "<a href='Login.php' class='btn btn-info' role='button'>Login</a> ";
-            echo "<a href='Register.php' class='btn btn-primary' role='button'>Sign Up</a>";
+            echo "<a href='Register.php' class='btn btn-primary' role='button'>Back</a>";
+            
             echo "</div>";
         } 
 
@@ -105,24 +102,28 @@
     <br/>
             <h2 class="centerMe">Please enter a username and desired password to create an account.</h2>
     <div class="centerMe">
-    <form method="post" action="<?php echo $_SERVER['PHP_SELF'];?>">
-        <fieldset>
-            <legend class="center">Registration Info</legend>
-            
-            <label for="username">Username:</label>
-            <input type="text" id="username" name="username"
-                value ="<?php if(!empty($username)) echo $username; ?>" /><br />
-            
-            <label for="password1">Password:</label>
-            <input type="password" id="password1" name="password1" /><br />
-            
-            <label for="password2">Confirm:</label>
-            <input type="password" id="password2" name="password2" /><br />
-        </fieldset>
-        <br />
-        <input type="submit" value="Sign Up!" name="submit" />
-        <input type="reset" value="Clear" name="clear" />
-    </form>  
+            <div class="card mx-auto" style="width: 18rem;">
+          <div class="card-body">
+            <h5 class="card-title">Login</h5>
+             <form method="post" action="<?php echo $_SERVER['PHP_SELF'];?>">
+                <div class="form-group">
+                  
+                  <input type="text" class="form-control" id="username" name="username" aria-describedby="username" placeholder="Username">
+                </div>
+                <div class="form-group">
+                  
+                  <input type="password" class="form-control" id="password1" name="password1" placeholder="Password">
+                </div>
+
+                <div class="form-group">
+                  
+                  <input type="password" class="form-control" id="password2" name="password2" placeholder="Confirm Pass">
+                </div>
+                
+                <input type="submit" value="Sign Up!" name="submit" />
+              </form>      
+      </div>
+      </div>
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
