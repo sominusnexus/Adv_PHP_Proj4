@@ -1,5 +1,6 @@
 <?php
 	require_once('startsession.php');
+    require_once('UserManager.php');
 ?>
 <!doctype html>
 <html lang="en">
@@ -33,7 +34,9 @@
         if (!empty($username) && !empty($password1) && !empty($password2) &&
             ($password1 == $password2)) {
     
-        // Confirm username is not already in use 
+            // Confirm username is not already in use 
+
+        $db = new PDO("mysql:host=localhost;dbname=project_4", "root", "root"); 
 
         $sql = "SELECT * FROM Task_User WHERE username = '$username'";
 
