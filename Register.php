@@ -72,7 +72,7 @@
             // Confirm success with the user
                 echo "<br/><br/>";
                 echo '<h2 class="centerMe">Your account has been created successfully!';
-                sleep(5);
+                sleep(2);
                 header('Location: TaskService.php', true, 301);      
 
                 echo "<div class='centerMe'>";
