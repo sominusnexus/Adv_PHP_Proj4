@@ -1,6 +1,7 @@
 <?php
 	require_once('startsession.php');
     require_once('UserManager.php');
+    require_once('StatsManager.php');
 ?>
 <!doctype html>
 <html lang="en">
@@ -68,6 +69,9 @@
             {
                 echo "{$ex->getMessage()}<br/>";
             }
+
+            $stats_manager = new StatsManager();
+            $stats_manager->create($username);
 
             // Confirm success with the user
                 echo "<br/><br/>";

@@ -1,12 +1,14 @@
 <?php
     require_once("TaskManager.php");
     require_once('LogManager.php');
+    require_once('StatsManager.php');
     require_once('startsession.php');
     
     $http_verb = $_SERVER['REQUEST_METHOD'];
     
     $task_manager = new TaskManager();
     $log_manager = new LogManager();
+    $stats_manager = new StatsManager();
     
     switch ($http_verb)
     {
@@ -16,6 +18,7 @@
             {
                 echo $task_manager->create($_POST['description'], $_POST['created_by_user']);
                 echo $log_manager->updateCreate();
+                echo $stats_manager->create($username);
             }
             else
             {
