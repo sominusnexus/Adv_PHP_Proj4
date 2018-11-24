@@ -1,17 +1,21 @@
 <?php
     require_once("TaskManager.php");
+    require_once('LogManager.php');
+    require_once('startsession.php');
     
     $http_verb = $_SERVER['REQUEST_METHOD'];
     
     $task_manager = new TaskManager();
+    $log_manager = new LogManager();
     
     switch ($http_verb)
     {
         case "POST":
             // Create
-            if (isset($_POST['description']))
+            if (isset($_POST['description']) && isset($_POST['created_by_user']))
             {
-                echo $task_manager->create($_POST['description']);
+                echo $task_manager->create($_POST['description'], $_POST['created_by_user']);
+                echo $log_manager->updateCreate();
             }
             else
             {

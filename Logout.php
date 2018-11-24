@@ -19,6 +19,6 @@
     setcookie('username', '', time() - 3600);
     
     // Redirect to home page
-    $home_url = 'http://' . $_SERVER['HTTP_HOST'] . dirname($_SERVER['PHP_SELF']) . '/NoLogin.php';
+    $home_url = 'http://' . $_SERVER['HTTP_HOST'] . dirname($_SERVER['PHP_SELF']) . '/index.php';
     header('Location: ' .$home_url);
 ?>

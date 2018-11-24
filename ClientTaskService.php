@@ -1,9 +1,12 @@
 <?php
+	require_once('startsession.php');
 	require_once('vendor/autoload.php');
 
 	$client = new GuzzleHttp\Client();
 
 	$url = "http://localhost/project4/TaskService.php";
+
+	echo "<h6 class='centerMe'>Logged in as: " . $_SESSION['username'] . "</h6>";
 
 	// Test Task Manager ReadAll with GET
 
@@ -59,9 +62,15 @@
 
 	try  {
 		
+		$description = $_POST['description'];
+		$created_by_user = $_SESSION['username'];
+
 		$response = $client->request("POST", $url, 
 				['form_params' => 
-				['description' => 'Snuggle Pippin']]); 
+					[ 'description' => $description,
+				 	  'created_by_user' => $created_by_user
+					] 
+				]); 
 		
 		// POST requires using form params
 		$response_body = $response->getBody();

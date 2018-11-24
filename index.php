@@ -1,146 +1,137 @@
 <?php
-  require_once('startsession.php');
-
-  if (!isset($_SESSION['username'])) {
-      header('Location: NoLogin.php', true, 301);
-      exit();
-  }
-  
+    require_once('startsession.php');
 ?>
 
-<!doctype html>
-<html lang="en">
-  <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!DOCTYPE html>
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+   <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-    <link rel="stylesheet" type="text/css" href="proj4.css">
-    <title>Project 4</title>
-  </head>
-  <body>
-      <br/>
-    <h1 class="centerMe">Project 4 PDO/REST Task Service</h1>
-    <br/>
+  <!-- jQuery library -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"> </script>
+
+  <!-- Latest compiled JavaScript -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"> </script>
+  <title>Login</title>
+  <link rel="stylesheet" type="text/css" href="proj4.css" />
+</head> 
+<body>
+<div class="container">
+    <div class="centerMe">
+
     <?php 
           if (isset($_SESSION['username'])) {
             echo "<h5 class='centerMe'>Logged in as: " . $_SESSION['username'] . "</h5>";
             echo "<h6 class='centerMe'><a href='Logout.php'>Log Out</a></h6>";
+          
+            echo "<br/>";
+            echo "<br/>";   
+            echo "<a href='TaskManagement.php' class='btn btn-outline-secondary btn-lg active' role='button'>Task Management</a>";
           }
-    ?>      
-    <br/>    
-    <div class="container">
-    <div class="row">
-        <div class="col-sm">
-    <div class="card mx-auto" style="width: 18rem;">
-  <div class="card-body">
-    <h5 class="card-title centerMe">Create a Task</h5>
-    <form action="TaskService.php" method="POST">
-  <div class="form-group">
-      <div class="centerMe">
-    <label for="description">Task Description</label>
-     </div>
-    <input type="text" class="form-control" id="description" name="description" aria-describedby="description">
-  </div>
-   <div class="centerMe">
-  <button class="btn btn-outline-primary" role="button" aria-pressed="true">Enter Task</button>
-   </div>
-</form>
-  </div>
-</div>
- </div>
-   <br/>
-   <br/>
-     <div class="col-sm">
-    <div class="card mx-auto" style="width: 18rem;">
-  <div class="card-body">
-    <h5 class="card-title centerMe">Retrieve Task by Id</h5>
-    <form action="Read.php" method="POST">
-  <div class="form-group">
-      <div class="centerMe">
-    <label for="description">Enter Task Id</label>
-     </div>
-    <input type="text" class="form-control" id="id" name="id" aria-describedby="description">
-  </div>
-   <div class="centerMe">
-  <button class="btn btn-outline-success" role="button" aria-pressed="true">Enter Id</button>
-   </div>
-</form>
-  </div>
-</div>
- </div>
- </div>
-  <br/>
-  <br/>
-       <div class="row">
-        <div class="col-sm">
-    <div class="card mx-auto" style="width: 18rem;">
-  <div class="card-body">
-    <h5 class="card-title centerMe">Update Task by Id</h5>
-    <form action="Update.php" method="POST">
-  <div class="form-group">
-      <div class="centerMe">
-    <label for="description">Enter Id</label>
-     </div>
-    <input type="text" class="form-control" id="id" name="id" aria-describedby="description">
-    <br/>
-     <div class="centerMe">
-    <label for="description">Enter new Description</label>
-     <input type="text" class="form-control" id="description" name="description" aria-describedby="description">
-     </div>
-  </div>
-   <div class="centerMe">
-  <button class="btn btn-outline-warning" role="button" aria-pressed="true">Update Task</button>
-   </div>
-</form>
-  </div>
-</div>
- </div>
-   <br/>
-   <br/>
-     <div class="col-sm">
-    <div class="card mx-auto" style="width: 18rem;">
-  <div class="card-body">
-     <h5 class="card-title centerMe">Delete a Task</h5>
-    <form action="Delete.php" method="POST">
-  <div class="form-group">
-      <div class="centerMe">
-    <label for="description">Enter Task Id</label>
-     </div>
-    <input type="text" class="form-control" id="delete" name="delete" aria-describedby="description">
-  </div>
-   <div class="centerMe">
-  <button class="btn btn-outline-danger" role="button" aria-pressed="true">Delete Task</button>
-   </div>
-</form>
-  </div>
-</div>
- </div>
- </div>
-  <br/><br/>
-   <div class="card mx-auto" style="width: 18rem;">
-  <div class="card-body">
-     <h5 class="card-title centerMe">Retrieve All Tasks</h5>
-    <form action="ReadAll.php" method="POST">
-        <br/>
-  <div class="form-group">
-      <div class="centerMe">
-  </div>
-   <div class="centerMe">
-  <button class="btn btn-outline-info" role="button" aria-pressed="true">Get Tasks</button>
-   </div>
-</form>
-  </div>
-</div>
-</div>
- <br/><br/>
+    ?>  
 
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
-  </body>
+         
+    </div>    
+<?php   
+    
+    // Clear error message
+    $error_msg = "";
+
+    // If user isn't logged in, try to log them in
+    if (!isset($_SESSION['id'])) {
+        if (isset($_POST['submit'])) {
+    
+            // Connect to the DB
+            $db = new PDO("mysql:host=localhost;dbname=project_4", "root", "root");
+            
+            // Get user-entered log-in data
+            $user_username = $_POST['username'];
+            $user_password = $_POST['password'];
+            //$hash = password_hash($user_password, PASSWORD_DEFAULT);
+            
+            if (!empty($user_username) && !empty($user_password)) {
+                // Grab username and password from database
+
+                $sql = "SELECT id, username, user_pass FROM Task_User WHERE username = ?";
+
+                try
+            {
+                $query = $db->prepare($sql);
+                $query->execute([$user_username]);
+                $row = $query->fetch();
+                
+            }
+            catch(Exception $ex)
+            {
+                echo "{$ex->getMessage()}<br/>";
+            }
+                
+                if (is_array($row) && password_verify($user_password, $row['user_pass'])) {
+                    
+                    // Login is okay, set user id and username cookies and redirect to homepage
+                     $_SESSION['id'] = $row['id'];
+                     $_SESSION['username'] = $row['username'];
+                    setcookie('id', $row['id'], time() + (60 * 60 * 24 * 30));    // set cookie to expire in 30 days
+                    setcookie('username', $row['username'], time() + (60 * 60 * 24 * 30));  // set cookie to expire in 30 days
+                    $home_url = 'http://' . $_SERVER['HTTP_HOST'] . dirname($_SERVER['PHP_SELF']) . '/TaskManagement.php';
+                    header('Location: ' . $home_url);
+                }
+                
+                else {
+                    
+                    // Username and password are incorrect set an error message
+                    $error_msg = 'Sorry, you must enter a valid username and password to log in.';
+                }
+                
+                
+                
+            } else {
+                // The username and password were not entered so set an error message
+                $error_msg = 'Sorry, you must enter your username and password to log in.';
+            }
+                
+        }
+    }
+?>
+  
+<?php
+
+    // If session is empty, show an error message and the log-in form, otherwise confirm login
+    if (empty($_SESSION['username'])) {
+        echo '<p class="error">' . $error_msg . '</p>';
+        
+?>   
+    <div class="centerMe">
+    <form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>" /><br />
+        <fieldset>
+            <br />
+            <legend class="lrgtext">Please Log In</legend>
+            <br />
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="username"
+                value="<?php if (!empty($user_username)) echo $user_username; ?>" /><br />
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" />
+        </fieldset>
+        <br />
+        <input type="submit" class="btn btn-primary" value="Log in" name="submit" />
+        <input type="reset" class="btn btn-default" value="Clear" name="reset" />
+                             
+    </form>
+    <br/>
+        <a href="Register.php" class="btn btn-secondary btn-lg">Create an Account</a>
+    </div>
+<?php
+
+    }
+    
+    else {
+        
+    }
+?>
+
+</body>
 </html>
