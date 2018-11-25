@@ -37,6 +37,7 @@
             }
             else
             {
+                $created_by_user = $_SESSION['username'];
                 echo $task_manager->readAll();
             }
             

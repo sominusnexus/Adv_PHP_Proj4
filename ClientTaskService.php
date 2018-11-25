@@ -13,7 +13,7 @@
 	switch ($action) {
 		case 'create_task':
 			
-			// Test Task Manager Create with POST
+			// Task Manager Create with POST
 
 				try  {
 					
@@ -50,9 +50,9 @@
 
 			break;
 
-			case 'read_all':
+		case 'read_all':
 
-				// Test Task Manager ReadAll with GET
+				// Task Manager ReadAll with GET
 
 				try  {
 					$response = $client->request("GET", $url);
@@ -75,10 +75,13 @@
 				//echo "$response_body"; This creates a JSON Object
 				print_r($decoded_body); // This returns a decoded JSON object that php can use
 				echo "</pre>";
+		break;
 
-				// Test Task Manager Read by ID 
+		case 'read_by_id':
+			
+			//Task Manager Read by ID 
 
-				$id = 2;
+				$id = $_POST['id'];
 
 				try  {
 					//$response = $client->request("GET", "$url?id=$id");
@@ -97,18 +100,19 @@
 				}
 
 				echo "Task Service GET Response with Specified ID: <br/>";
+				echo $id;
 				echo "<pre>";
 				echo "$response_body"; //This creates a JSON Object
 				//print_r($decoded_body); // This returns a decoded JSON object that php can use
 				echo "</pre>";
-
 			break;	
+
 		default:
 			echo "No Action specified...bro";
 			break;
 	}
 
-	
+			
 
 	
 	// Test Task Manager DELETE with provided ID
@@ -174,5 +178,6 @@
 	//print_r($decoded_body); // This returns a decoded JSON object that php can use
 	echo "</pre>";
 
+	// TESTING TESTING
 
 ?>

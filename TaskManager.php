@@ -7,6 +7,7 @@
         public $id;
         public $description;
         public $created_by_user;
+        public $username;
         
         // Magic get/set methods
 		public function __get($ivar) {
@@ -56,7 +57,6 @@
 		// Read All Tasks
 		public function readAll() {
 			// Database Technology, Server, DB name, username, password
-
             $retVal = null;
 
 			$db = new PDO("mysql:host=localhost;dbname=project_4", "root", "root");
@@ -71,6 +71,7 @@
             {
                 $query = $db->prepare($sql);
                 $query->execute();
+                //$query->bindParam(':username', $username);
                 $results = $query->fetchAll(PDO::FETCH_ASSOC);
                 $retVal = json_encode($results, JSON_PRETTY_PRINT);
             }

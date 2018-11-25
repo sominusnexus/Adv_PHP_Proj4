@@ -51,6 +51,41 @@
          </div>
 </div>
       </div>
+
+        <div class="centerMe">
+        <br/>
+        <br/>
+         <br/>
+         <h4>Read All Tasks</h4>
+        <div class="card mx-auto" style="width: 18rem;">
+          <div class="card-body">
+            <form action="ClientTaskService.php?action=read_all" method="POST">
+            <button type="submit" class="btn btn-primary">Submit</button>
+          </form>
+
+         </div>
+</div>
+      </div>
+
+      <div class="centerMe">
+        <br/>
+         <br/>
+         <h4>Read By ID</h4>
+        <div class="card mx-auto" style="width: 18rem;">
+          <div class="card-body">
+            <form action="ClientTaskService.php?action=read_by_id" method="GET">
+              <div class="form-group">
+              <label for="id">ID Number</label>
+              <input type="text" class="form-control" id="id" name="id" aria-describedby="description">
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+          </form>
+
+         </div>
+</div>
+      </div>
+
+
     </div>    
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
