@@ -40,7 +40,7 @@
          <h4>Create Task</h4>
         <div class="card mx-auto" style="width: 18rem;">
           <div class="card-body">
-            <form action="ClientTaskService.php" method="POST">
+            <form action="ClientTaskService.php?action=create_task" method="POST">
               <div class="form-group">
               <label for="description">Description</label>
               <input type="text" class="form-control" id="description" name="description" aria-describedby="description">

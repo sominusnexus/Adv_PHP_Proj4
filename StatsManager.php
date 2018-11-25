@@ -26,7 +26,7 @@
 			$db = new PDO("mysql:host=localhost;dbname=project_4", "root", "root");
 
 			// Insert a new record
-			$sql = "INSERT INTO Task_Stats (`username`, `Create`, `Read`, `ReadAll`, `Update`, `Delete`) VALUES ($username, 0, 0, 0, 0, 0)";
+			$sql = "INSERT INTO Task_Stats (`username`, `Create`, `Read`, `ReadAll`, `Update`, `Delete`) VALUES (:username, 0, 0, 0, 0, 0)";
 
 			// PDO Exception handling
 			$db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);

@@ -16,9 +16,9 @@
             // Create
             if (isset($_POST['description']) && isset($_POST['created_by_user']))
             {
+                $username = $_POST['created_by_user'];
                 echo $task_manager->create($_POST['description'], $_POST['created_by_user']);
-                echo $log_manager->updateCreate();
-                echo $stats_manager->create($username);
+                echo $log_manager->updateCreate($username);
             }
             else
             {
