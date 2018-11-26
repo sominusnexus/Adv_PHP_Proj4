@@ -7,7 +7,6 @@
         public $id;
         public $description;
         public $created_by_user;
-        public $username;
         
         // Magic get/set methods
 		public function __get($ivar) {
@@ -55,14 +54,14 @@
 		}
 		
 		// Read All Tasks
-		public function readAll() {
+		public function readAll($username) {
 			// Database Technology, Server, DB name, username, password
             $retVal = null;
 
 			$db = new PDO("mysql:host=localhost;dbname=project_4", "root", "root");
 
 			// Read all records
-			$sql = "SELECT * FROM Task";
+			$sql = "SELECT * FROM Task WHERE created_by_user = :username";
 
 			// PDO Exception handling
 			$db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
@@ -71,7 +70,7 @@
             {
                 $query = $db->prepare($sql);
                 $query->execute();
-                //$query->bindParam(':username', $username);
+                $query->bindParam(':username', $username);
                 $results = $query->fetchAll(PDO::FETCH_ASSOC);
                 $retVal = json_encode($results, JSON_PRETTY_PRINT);
             }
@@ -79,10 +78,6 @@
             {
                 echo "{$ex->getMessage()}<br/>";
             }
-
-            //foreach($results as $result) {
-               // echo $result . '<br>';
-           // }
             
             return $retVal;
 		}
@@ -166,11 +161,8 @@
                 echo "{$ex->getMessage()}<br/>";
             }
             
-            if ($results == !null) {
+            if ($results !== null) {
             
-            //foreach ($results as $result) {
-              //  echo $result;
-            //}
                 return $retVal;
             
             } else {

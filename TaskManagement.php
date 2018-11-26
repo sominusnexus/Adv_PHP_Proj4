@@ -6,6 +6,8 @@
 
   $url = "http://localhost/project4/TaskService.php";
 
+  $username = $_SESSION['username'];
+
   if (!isset($_SESSION['username'])) {
       header('Location: Login.php', true, 301);
       exit();
@@ -73,7 +75,48 @@
          <h4>Read By ID</h4>
         <div class="card mx-auto" style="width: 18rem;">
           <div class="card-body">
-            <form action="ClientTaskService.php?action=read_by_id" method="GET">
+            <form action="ClientTaskService.php?action=read_by_id" method="POST">
+              <div class="form-group">
+              <label for="id">ID Number</label>
+              <input type="text" class="form-control" id="id" name="id" aria-describedby="description">
+              <input type="hidden" value="$username" name="username" />
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+          </form>
+
+         </div>
+</div>
+      </div>
+
+        <div class="centerMe">
+        <br/>
+         <br/>
+         <h4>Update a task</h4>
+        <div class="card mx-auto" style="width: 18rem;">
+          <div class="card-body">
+            <form action="ClientTaskService.php?action=update" method="POST">
+              <div class="form-group">
+              <label for="id">ID Number</label>
+              <input type="text" class="form-control" id="id" name="id" aria-describedby="description">
+            </div>
+            <div class="form-group">
+              <label for="id">Description</label>
+              <input type="text" class="form-control" id="description" name="description" aria-describedby="description">
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+          </form>
+
+         </div>
+</div>
+      </div>
+
+        <div class="centerMe">
+        <br/>
+         <br/>
+         <h4>Delete By ID</h4>
+        <div class="card mx-auto" style="width: 18rem;">
+          <div class="card-body">
+            <form action="ClientTaskService.php?action=delete" method="POST">
               <div class="form-group">
               <label for="id">ID Number</label>
               <input type="text" class="form-control" id="id" name="id" aria-describedby="description">

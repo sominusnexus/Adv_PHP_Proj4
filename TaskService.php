@@ -37,8 +37,8 @@
             }
             else
             {
-                $created_by_user = $_SESSION['username'];
-                echo $task_manager->readAll();
+                echo $task_manager->readAll($username);
+                echo $log_manager->UpdateRead($username);
             }
             
             break;
