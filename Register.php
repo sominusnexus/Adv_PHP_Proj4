@@ -80,7 +80,7 @@
                 header('Location: Login.php', true, 301);      
 
                 echo "<div class='centerMe'>";
-                echo "<a href='Login.php' class='btn btn-info' role='button'>Login</a>";
+                echo "<a href='TaskManagement.php' class='btn btn-info' role='button'>Login</a>";
                 echo "</div>";
         }  else {
 

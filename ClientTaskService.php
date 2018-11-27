@@ -52,6 +52,7 @@
 
 		case 'read_all':
 
+			$id = $_POST['id'];
 				// Task Manager ReadAll with GET
 
 				try  {
@@ -73,39 +74,43 @@
 
 				echo "Task Service GET Response: <br/>";
 				echo "<pre>";
-				//echo "$response_body"; This creates a JSON Object
+				//echo "$response_body"; //This creates a JSON Object
 				print_r($decoded_body); // This returns a decoded JSON object that php can use
 				echo "</pre>";
 		break;
 
 		case 'read_by_id':
 			
-			//Task Manager Read by ID 
+			// Test Task Manager Read by sending HTTP GET with id=2
+			$id = $_GET['id'];
 
-				$id = $_POST['id'];
-				$username = $_POST['username'];
+			try  {
 
-				try  {
-					//$response = $client->request("GET", "$url?id=$id");
-					$response = $client->request("GET", $url, ['query' => ['id' => $id]]); // Different method for specifiying ID
-					$response_body = $response->getBody();
-				}
+				//$response = $client->request("GET", "$url?id=$id");
+				$response = $client->request("GET", $url, ['query' => ['id' => $id]]);
+				$response_body = $response->getBody();
+				
 
-				catch (RequestException $ex) {
-					echo "HTTP Request Failed\n";
-					echo "<pre>";
-					print_r($ex->getRequest());
+			}
 
-					if ($ex->hasResponse()) {
-						echo $ex->getResponse();
-					}
-				}
+			catch (RequestException $ex){
 
-				echo "Task Service GET Response with Specified ID: <br/>";
+				echo "HTTP Request failed\n";
 				echo "<pre>";
-				echo "$response_body"; //This creates a JSON Object
-				//print_r($decoded_body); // This returns a decoded JSON object that php can use
-				echo "</pre>";
+				print_r($ex->getRequest());
+
+				if ($ex->hasResponse()) {
+					echo $ex->getResponse();
+				}
+
+			} 
+
+	echo "Task Service HTTP GET Response: with id=$id:<br/>";
+	echo "<pre>";
+	echo "$response_body";
+	//print_r($decoded_body);
+	echo "</pre>";
+
 			break;	
 
 		case 'delete':
@@ -113,12 +118,17 @@
 			//Task Manager DELETE with provided ID
 
 				$id = $_POST['id'];
+				$username = $_SESSION['username'];
 
 				try  {
 					
 					$response = $client->request("DELETE", $url, 
 							['form_params' => 
-							['id' => $id]]); 
+								[
+									'id' => $id,
+									'username' => $username
+								]
+							]); 
 					
 					// POST requires using form params
 					$response_body = $response->getBody();
@@ -151,11 +161,13 @@
 					
 				$id = $_POST['id'];
 				$description = $_POST['description'];
+				$username = $_SESSION['username'];
 
 					$response = $client->request("PUT", $url, 
 							['form_params' => 
 								[ 'id' => $id,
-							 	  'description' => $description
+							 	  'description' => $description,
+							 	  'username' => $username
 							 	]  
 							]); 
 					

@@ -5,7 +5,7 @@
     require_once('startsession.php');
     
     $http_verb = $_SERVER['REQUEST_METHOD'];
-    
+   
     $task_manager = new TaskManager();
     $log_manager = new LogManager();
     $stats_manager = new StatsManager();
@@ -37,7 +37,7 @@
             }
             else
             {
-                echo $task_manager->readAll($username);
+                echo $task_manager->readAll();
                 echo $log_manager->UpdateRead($username);
             }
             
@@ -45,11 +45,14 @@
             
         case "PUT":
             // Update
+
             parse_str(file_get_contents("php://input"), $update_vars);
             
-            if (isset($update_vars['id']) && isset($update_vars['description']))
+            if (isset($update_vars['id']) && isset($update_vars['description']) && isset($update_vars['username']))
             {
-                echo $task_manager->update($update_vars['id'], $update_vars['description']);
+                $username = $update_vars['username'];
+                echo $task_manager->update($update_vars['id'], $update_vars['description'], $update_vars['username']);
+                echo $log_manager->updateUpdate($username);
             }
             else
             {
@@ -62,9 +65,11 @@
             // Delete
             parse_str(file_get_contents("php://input"), $delete_vars);
             
-            if (isset($delete_vars['id']))
+            if (isset($delete_vars['id']) && isset($delete_vars['username']))
             {
-                echo $task_manager->delete($delete_vars['id']);
+                $username = $delete_vars['username'];
+                echo $task_manager->delete($delete_vars['id'], $delete_vars['username']);
+                echo $log_manager->updateDelete($username);
             }
             else
             {

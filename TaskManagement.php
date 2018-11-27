@@ -58,10 +58,12 @@
         <br/>
         <br/>
          <br/>
-         <h4>Read All Tasks</h4>
+         <h4>Read By Id</h4>
         <div class="card mx-auto" style="width: 18rem;">
           <div class="card-body">
             <form action="ClientTaskService.php?action=read_all" method="POST">
+              <label for="id">ID Number</label>
+              <input type="text" class="form-control" id="id" name="id" aria-describedby="description">
             <button type="submit" class="btn btn-primary">Submit</button>
           </form>
 
@@ -72,13 +74,11 @@
       <div class="centerMe">
         <br/>
          <br/>
-         <h4>Read By ID</h4>
+         <h4>Read All</h4>
         <div class="card mx-auto" style="width: 18rem;">
           <div class="card-body">
             <form action="ClientTaskService.php?action=read_by_id" method="POST">
               <div class="form-group">
-              <label for="id">ID Number</label>
-              <input type="text" class="form-control" id="id" name="id" aria-describedby="description">
               <input type="hidden" value="$username" name="username" />
             </div>
             <button type="submit" class="btn btn-primary">Submit</button>
