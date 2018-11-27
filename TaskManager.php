@@ -54,14 +54,14 @@
 		}
 		
 		// Read All Tasks
-		public function readAll() {
+		public function readAll($username) {
 			// Database Technology, Server, DB name, username, password
             $retVal = null;
 
 			$db = new PDO("mysql:host=localhost;dbname=project_4", "root", "root");
 
 			// Read all records
-			$sql = "SELECT * FROM Task";
+			$sql = "SELECT * FROM Task WHERE `created_by_user` = :username";
 
 			// PDO Exception handling
 			$db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
@@ -69,8 +69,8 @@
 			try
             {
                 $query = $db->prepare($sql);
+                $query->bindParam(':username', $username);
                 $query->execute();
-                //$query->bindParam(':username', $username);
                 $results = $query->fetchAll(PDO::FETCH_ASSOC);
                 $retVal = json_encode($results, JSON_PRETTY_PRINT);
             }
@@ -143,7 +143,7 @@
 			$db = new PDO("mysql:host=localhost;dbname=project_4", "root", "root");
 
 			// Read all records
-			$sql = "SELECT description FROM Task WHERE `id`=:id";
+			$sql = "SELECT id, description, created_by_user FROM Task WHERE `id`=:id";
 
 			// PDO Exception handling
 			$db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);

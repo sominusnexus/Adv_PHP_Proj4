@@ -31,14 +31,23 @@
             // Read
             header("Content-Type: application/json");
             
-            if (isset($_GET['id']))
+            if (isset($_GET['id']) && isset($_GET['username']))
             {
-                echo $task_manager->read($_GET['id']);
+                $username = $_GET['username'];
+                echo $task_manager->read($_GET['id'], $_GET['username']);
+                echo $log_manager->updateReadID($username);
             }
-            else
+            else 
             {
-                echo $task_manager->readAll();
-                echo $log_manager->UpdateRead($username);
+                if (isset($_GET['username'])) 
+                {
+
+                    $username = $_GET['username'];
+                    echo $task_manager->readAll($_GET['username']);
+                    echo $log_manager->UpdateRead($username);
+                    
+                }    
+                
             }
             
             break;

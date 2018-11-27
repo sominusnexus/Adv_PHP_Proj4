@@ -52,11 +52,11 @@
 
 		case 'read_all':
 
-			$id = $_POST['id'];
 				// Task Manager ReadAll with GET
-
+				$username = $_SESSION['username'];
+				
 				try  {
-			        $response = $client->request("GET", $url);
+			        $response = $client->request("GET", $url, ['query' => ['username' => $username]]);
 					$response_body = $response->getBody();
 					$decoded_body = json_decode($response_body);
 
@@ -81,13 +81,15 @@
 
 		case 'read_by_id':
 			
-			// Test Task Manager Read by sending HTTP GET with id=2
-			$id = $_GET['id'];
+			//Task Manager Read by sending HTTP GET 
+			$id = $_POST['id'];
+			$username = $_SESSION['username'];
 
 			try  {
 
 				//$response = $client->request("GET", "$url?id=$id");
-				$response = $client->request("GET", $url, ['query' => ['id' => $id]]);
+				$response = $client->request("GET", $url, ['query' => ['id' => $id,
+					'username' => $username]]);
 				$response_body = $response->getBody();
 				
 
