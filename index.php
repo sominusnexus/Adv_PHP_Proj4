@@ -30,6 +30,7 @@
             echo "<br/>";
             echo "<br/>";   
             echo "<a href='TaskManagement.php' class='btn btn-outline-secondary btn-lg active' role='button'>Task Management</a>";
+            echo "<a href='UserManagement.php' class='btn btn-outline-secondary btn-lg active' role='button'>User Management</a>";
           }
     ?>  
 

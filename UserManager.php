@@ -76,6 +76,35 @@
             
             return $rowsAffected; // Returns the number of rows deleted
         }
+
+        // Read All Tasks
+        public function readAll() {
+            // Database Technology, Server, DB name, username, password
+            $retVal = null;
+
+            $db = new PDO("mysql:host=localhost;dbname=project_4", "root", "root");
+
+            // Read all records
+            $sql = "SELECT * FROM Task_Stats";
+
+            // PDO Exception handling
+            $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+            try
+            {
+                $query = $db->prepare($sql);
+                $query->bindParam(':username', $username);
+                $query->execute();
+                $results = $query->fetchAll(PDO::FETCH_ASSOC);
+                $retVal = json_encode($results, JSON_PRETTY_PRINT);
+            }
+            catch(Exception $ex)
+            {
+                echo "{$ex->getMessage()}<br/>";
+            }
+            
+            return $retVal;
+        }
 		
     }
 ?>
