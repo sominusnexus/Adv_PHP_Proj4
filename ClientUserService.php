@@ -39,6 +39,7 @@
 				echo "$response_body"; //This creates a JSON Object
 				//print_r($decoded_body); // This returns a decoded JSON object that php can use
 				echo "</pre>";
+				echo "<a href='UserManagement.php' class='btn btn-outline-secondary btn-lg active' role='button'>Back</a>";
 		break;
 
 		case 'read_by_id':

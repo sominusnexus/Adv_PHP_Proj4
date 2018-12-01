@@ -53,4 +53,6 @@
 
          </div>
 </div>
+	<br/>
+	<a href='index.php' class='btn btn-outline-secondary btn-lg active' role='button'>Back</a>
       </div>

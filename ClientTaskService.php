@@ -46,6 +46,7 @@
 				echo "$response_body"; //This creates a JSON Object
 				//print_r($decoded_body); // This returns a decoded JSON object that php can use
 				echo "</pre>";
+				echo "<a href='TaskManagement.php' class='btn btn-outline-secondary btn-lg active' role='button'>Back to Tasks</a>";
 
 
 			break;
@@ -77,6 +78,7 @@
 				//echo "$response_body"; //This creates a JSON Object
 				print_r($decoded_body); // This returns a decoded JSON object that php can use
 				echo "</pre>";
+				echo "<a href='TaskManagement.php' class='btn btn-outline-secondary btn-lg active' role='button'>Back to Tasks</a>";
 		break;
 
 		case 'read_by_id':
@@ -107,11 +109,12 @@
 
 			} 
 
-	echo "Task Service HTTP GET Response: with id=$id:<br/>";
-	echo "<pre>";
-	echo "$response_body";
-	//print_r($decoded_body);
-	echo "</pre>";
+			echo "Task Service HTTP GET Response: with id=$id:<br/>";
+			echo "<pre>";
+			echo "$response_body";
+			//print_r($decoded_body);
+			echo "</pre>";
+			echo "<a href='TaskManagement.php' class='btn btn-outline-secondary btn-lg active' role='button'>Back to Tasks</a>";
 
 			break;	
 
@@ -151,6 +154,7 @@
 				echo "$response_body"; //This creates a JSON Object
 				//print_r($decoded_body); // This returns a decoded JSON object that php can use
 				echo "</pre>";
+				echo "<a href='TaskManagement.php' class='btn btn-outline-secondary btn-lg active' role='button'>Back to Tasks</a>";
 
 
 		break;	
@@ -192,11 +196,12 @@
 				echo "$response_body"; //This creates a JSON Object
 				//print_r($decoded_body); // This returns a decoded JSON object that php can use
 				echo "</pre>";
+				echo "<a href='TaskManagement.php' class='btn btn-outline-secondary btn-lg active' role='button'>Back to Tasks</a>";
 
 		break;
 
 		default:
-			echo "No Action specified...bro";
+			echo "No Action specified";
 			break;
 	}
 
